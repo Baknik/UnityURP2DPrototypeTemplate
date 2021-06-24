@@ -12,6 +12,7 @@ public class ClickableObject : MonoBehaviour, IPointerClickHandler, IPointerDown
     [Header("Settings")]
     public float ScaleFactor = 0.8f;
     public Color ClickColor = Color.green;
+    public SFXPlayer ClickSFX;
 
     private Vector2 originalScale;
     private Color originalColor;
@@ -46,6 +47,8 @@ public class ClickableObject : MonoBehaviour, IPointerClickHandler, IPointerDown
         clickSequence.Append(this.spriteRenderer.DOColor(ClickColor, 0.1f));
         clickSequence.Append(this.spriteRenderer.DOColor(this.originalColor, 0.1f));
         clickSequence.Play();
+
+        ClickSFX.Play();
     }
 
     public void OnPointerDown(PointerEventData eventData)
