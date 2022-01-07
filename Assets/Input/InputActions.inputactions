@@ -2,7 +2,7 @@
     "name": "InputActions",
     "maps": [
         {
-            "name": "Main",
+            "name": "ActionMap",
             "id": "395e8ef3-19b9-4c10-a12d-fcf21a9e5a72",
             "actions": [
                 {
@@ -11,7 +11,8 @@
                     "id": "c7af28b0-bf0a-4b3d-814e-53a7ae68e06e",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Quit",
@@ -19,7 +20,8 @@
                     "id": "895409f8-74dc-4ba0-aa9a-447f0ecd1631",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Reload",
@@ -27,7 +29,8 @@
                     "id": "873f72bf-4e1b-4df0-97dd-7b2c1fd04e75",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
