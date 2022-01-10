@@ -9,6 +9,9 @@ namespace MVCEngine
     {
         private InputActions _inputActions;
 
+        public delegate void DirectionalMovementChanged(Vector2 direction);
+        public static event DirectionalMovementChanged OnDirectionalMovementChanged;
+
         public delegate void Quit();
         public static event Quit OnQuit;
 
@@ -31,6 +34,7 @@ namespace MVCEngine
 
             _inputActions.ActionMap.Quit.performed += ctx => HandleQuitPerformed(ctx);
             _inputActions.ActionMap.Reload.performed += ctx => HandleReloadPerformed(ctx);
+            _inputActions.ActionMap.Directional.performed += ctx => HandleDirectionalPerformed(ctx);
         }
 
         private void OnDisable()
@@ -39,6 +43,26 @@ namespace MVCEngine
 
             _inputActions.ActionMap.Quit.performed -= ctx => HandleQuitPerformed(ctx);
             _inputActions.ActionMap.Reload.performed -= ctx => HandleReloadPerformed(ctx);
+            _inputActions.ActionMap.Directional.performed -= ctx => HandleDirectionalPerformed(ctx);
+        }
+
+        private void Start()
+        {
+            if (OnDirectionalMovementChanged != null)
+            {
+                OnDirectionalMovementChanged(Vector2.zero);
+            }
+        }
+
+        private void HandleDirectionalPerformed(InputAction.CallbackContext ctx)
+        {
+            Vector2 direction = ctx.ReadValue<Vector2>();
+
+            if (OnDirectionalMovementChanged != null &&
+                direction != null)
+            {
+                OnDirectionalMovementChanged(direction);
+            }
         }
 
         private void HandleQuitPerformed(InputAction.CallbackContext ctx)
