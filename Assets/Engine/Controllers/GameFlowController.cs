@@ -12,6 +12,7 @@ namespace MVCEngine
         {
             
         }
+
         private void OnEnable()
         {
             InputController.OnQuit += HandleQuit;
